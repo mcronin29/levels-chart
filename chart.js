@@ -1,4 +1,4 @@
-
+console.log('chart.js loaded');
 var options = {
   type: 'line',
   options: {
