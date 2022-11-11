@@ -1,5 +1,4 @@
-console.log('chart.js loaded');
-console.log('data', data);
+
 var calculatedData = {
     labels: [],
     levelData: [],
@@ -10,7 +9,7 @@ var calculatedData = {
 }
 
 for (var i = 0; i < data.length; i++) {
-    console.log(data[i]);
+
     calculatedData.labels.push(data[i].approximate);
     calculatedData.levelData.push(data[i].level);
     if (data[i].low !== undefined)
@@ -30,20 +29,46 @@ for (var i = 0; i < data.length; i++) {
 
     calculatedData.highData.push(25);
 }
-console.log(calculatedData);
+
 
 
 var options = {
     type: 'line',
+
     options: {
         plugins: {
-            title: {
-                display: true
-            },
-            beforeInit: function (chart, args, options) {
-                console.log('x');
+            autocolors: false,
+            annotation: {
+                annotations: {
+                    box1: {
+                        type: 'box',
+                        xMin: 1,
+                        xMax: 4,
+                        yMin: 25,
+                        yMax: 0,
+                        backgroundColor: 'rgba(0, 0, 132, 0.25)'
+                    },
+                    box2: {
+                        type: 'box',
+                        xMin: 4,
+                        xMax: 7,
+                        yMin: 25,
+                        yMax: 0,
+                        backgroundColor: 'rgba(0, 0, 132, 0.50)'
+                    },
+
+                    box3: {
+                        type: 'box',
+                        xMin: 7,
+                        xMax: 8,
+                        yMin: 25,
+                        yMax: 0,
+                        backgroundColor: 'rgba(0, 0, 132, 0.75)'
+                    }
+                }
             }
         }
+
     },
 
     data: {
@@ -66,7 +91,8 @@ var options = {
                 backgroundColor: 'rgba(255,255,255,0.5)',
                 pointRadius: 0,
                 spanGaps: true,
-                tension: 0
+                tension: 0,
+                fill: true
             },
             {
                 label: 'Low Intermediate',
@@ -75,7 +101,8 @@ var options = {
                 pointRadius: 0,
                 spanGaps: true,
                 tension: 0,
-                backgroundColor: 'rgba(255,255,255,0.5)'
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                fill: true
             },
             {
                 label: 'High Intermediate',
@@ -84,7 +111,8 @@ var options = {
                 pointRadius: 0,
                 spanGaps: true,
                 tension: 0,
-                backgroundColor: 'rgba(255,255,255,0.5)'
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                fill: true
             },
             {
                 label: 'High',
@@ -93,19 +121,12 @@ var options = {
                 pointRadius: 0,
                 spanGaps: true,
                 tension: 0,
-                backgroundColor: 'rgba(128,0,0,0.7)'
+                backgroundColor: 'rgba(128,0,0,0.7)',
+                fill: true
             }
         ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    reverse: false
-                }
-            }]
-        }
     }
+
 }
 
 var ctx = document.getElementById('chartJSContainer').getContext('2d');
