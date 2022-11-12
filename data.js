@@ -257,7 +257,7 @@ var data = [
     },
     {
         "approximate": "12 Nov morning",
-        "level": null,
+        "level": 15,
         "radiance": null
     },
     {
